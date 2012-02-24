@@ -1022,6 +1022,7 @@ blob_dml_file(Tcl_Interp *interp, Ns_DbHandle *handle, char* blob_id,
 			char* filename)
 {
     NsPgConn	*nspgConn = (NsPgConn *) handle->connection;
+        int             result = TCL_OK;
 	int			fd, i, j, segment, readlen;
 	char		in_buf[6000], out_buf[8001], query[10000];
 	char		*segment_pos;
@@ -1075,7 +1076,7 @@ blob_dml_file(Tcl_Interp *interp, Ns_DbHandle *handle, char* blob_id,
 		segment++;
 	}
 	close(fd);
-	return TCL_OK;
+	return result;
 }
 
 /* ns_pg blob_select_file db blob_id filename
