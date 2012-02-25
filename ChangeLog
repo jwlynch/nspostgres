@@ -1,3 +1,13 @@
+2012-02-25  Jim Lynch <jim@jam.sessionsnet.org>
+
+	* nspostgres.c: restructure the func blob_dml_file so there is one
+	  and only one exit point for the function. So, only one return
+	  statement, which now returns the content of the int var result,
+	  which is arranged to contain the proper return value. Make sure
+	  the file referred to by fd is closed after it is successfully
+	  opened, even if a database error is thrown in the blob loop, and
+	  no attempt made to close it if not successfully opened at the start.
+
 2007-06-12  tag nspostgres_v4_r1
 
 2007-06-12  Dossy Shiobara <dossy@panoptic.com>
